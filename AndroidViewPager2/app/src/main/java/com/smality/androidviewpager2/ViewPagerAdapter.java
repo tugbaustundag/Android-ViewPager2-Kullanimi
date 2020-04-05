@@ -19,11 +19,13 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         this.mData = data;
         this.viewPager2 = viewPager2;
     }
+	//Bu metodda inflate sınıfı kullanılarak, item_viewpager xml'i tanımlandı
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_viewpager, parent, false);
         return new ViewHolder(view);
     }
+	//Bu metodda layoutdaki arayüz elemanlarına, yazı ve renk değerler atandı
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String animal = mData.get(position);
@@ -35,18 +37,17 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         return mData.size();
     }
 
-    //RecyclerView sayesinde, sayfalar içindeki Toogle butonuyla etkileşim yapılarak, sayfaları dikey yada yatay pozisyonda göstermemizi saglayan metod
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView myTextView;
         RelativeLayout relativeLayout;
         Button button;
-
+		//layoutdaki arayüz elemanları tanımlandı
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.tvTitle);
             relativeLayout = itemView.findViewById(R.id.container);
             button = itemView.findViewById(R.id.btnToggle);
-
+		//sayfalar içindeki Toogle butonuyla etkileşim yapılarak, sayfaları dikey yada yatay pozisyonda göstermemizi saglayan metod
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
